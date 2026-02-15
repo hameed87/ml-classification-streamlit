@@ -1,122 +1,108 @@
-# Machine Learning Classification Models with Streamlit Deployment
+# ML Assignment 2 – Credit Card Default Prediction
+
+## 🔹 Problem Statement
+
+The objective of this project is to build multiple machine learning classification models to predict whether a credit card customer will default on payment next month using historical billing and payment data.
+The project also includes deployment of an interactive Streamlit web application for model demonstration and evaluation.
 
 ---
 
-## a. Problem Statement
+## 🔹 Dataset Description
 
-The objective of this project is to design, implement, and evaluate multiple machine learning classification models on a real-world dataset. The project demonstrates an end-to-end machine learning workflow that includes data preprocessing, model training, evaluation using multiple performance metrics, and deployment of an interactive web application using Streamlit.
+Dataset: Default of Credit Card Clients (UCI / Kaggle)
+Instances: 30,000
+Features: 23
+Target variable: `default.payment.next.month`
 
----
-
-## b. Dataset Description  **[1 Mark]**
-
-<!-- TODO: Fill in dataset information -->
-- **Dataset Name**:   
-- **Dataset Source**:   
-- **Problem Type**:   
-- **Number of Instances**:  
-- **Number of Features**:   
-
-### Dataset Details
-
-The dataset consists of multiple numerical and categorical features related to patient health indicators. These features are used to predict the target variable, which represents the presence or absence of a specific condition. Prior to model training, the dataset was cleaned and preprocessed to ensure consistency and suitability for machine learning algorithms.
+The dataset contains demographic information, credit limit, past payment history, bill statements, and payment amounts for credit card customers.
+The task is a binary classification problem to predict whether a customer will default on payment in the next month.
 
 ---
 
-## c. Models Used and Evaluation Metrics  **[6 Marks]**
+## 🔹 Models Implemented
 
-The following six machine learning classification models were implemented on the same dataset:
+The following classification models were implemented on the same dataset:
 
-1. Logistic Regression  
-2. Decision Tree Classifier  
-3. K-Nearest Neighbors (KNN)  
-4. Naive Bayes (Gaussian)  
-5. Random Forest (Ensemble Model)  
-6. XGBoost (Ensemble Model)  
-
-Each model was evaluated using the following performance metrics:
-
-- Accuracy  
-- AUC Score  
-- Precision  
-- Recall  
-- F1 Score  
-- Matthews Correlation Coefficient (MCC)
+1. Logistic Regression
+2. Decision Tree
+3. K-Nearest Neighbors (KNN)
+4. Naive Bayes
+5. Random Forest (Ensemble Model)
+6. XGBoost (Ensemble Model)
 
 ---
 
-### Comparison Table of Model Performance
-<!-- TODO: Fill in Model Performance -->
-| ML Model Name | Accuracy | AUC | Precision | Recall | F1 Score | MCC |
-|--------------|----------|-----|-----------|--------|----------|-----|
-| Logistic Regression |  |  |  |  |  |  |
-| Decision Tree |  |  |  |  |  |  |
-| K-Nearest Neighbors |  |  |  |  |  |  |
-| Naive Bayes |  |  |  |  |  |  |
-| Random Forest (Ensemble) |  |  |  |  |  |  |
-| XGBoost (Ensemble) |  |  |  |  |  |  |
+## 🔹 Evaluation Metrics
+
+Each model was evaluated using:
+
+* Accuracy
+* AUC Score
+* Precision
+* Recall
+* F1 Score
+* Matthews Correlation Coefficient (MCC)
 
 ---
 
-## d. Observations on Model Performance  **[3 Marks]**
+## 🔹 Model Comparison Table
 
-<!-- TODO: Fill in observations for all models -->
-| ML Model Name | Observation about Model Performance |
-|--------------|-------------------------------------|
-| Logistic Regression |  |
-| Decision Tree |  |
-| K-Nearest Neighbors |  |
-| Naive Bayes |  |
-| Random Forest (Ensemble) |  |
-| XGBoost (Ensemble) |  |
-
----
-
-## e. Streamlit Web Application
-
-An interactive web application was developed using Streamlit and deployed on Streamlit Community Cloud.
-
-### Application Features
-
-- CSV dataset upload option (test data only)  
-- Model selection using a dropdown menu  
-- Display of evaluation metrics  
-- Confusion matrix and classification report visualization  
-
-<!-- TODO: Add Streamlit app deployment link here -->
-**Live Streamlit App Link**:  
-
+| ML Model Name       | Accuracy | AUC Score | Precision | Recall | F1 Score | MCC Score |
+| ------------------- | -------- | --------- | --------- | ------ | -------- | --------- |
+| Logistic Regression | 0.8109   | 0.7347    | 0.7203    | 0.2375 | 0.3572   | 0.3373    |
+| Decision Tree       | 0.7324   | 0.6200    | 0.3998    | 0.4183 | 0.4088   | 0.2361    |
+| KNN                 | 0.8151   | 0.7500    | 0.6581    | 0.3412 | 0.4494   | 0.3789    |
+| Naive Bayes         | 0.5971   | 0.7434    | 0.3251    | 0.7637 | 0.4561   | 0.2604    |
+| Random Forest       | 0.8255   | 0.7843    | 0.6842    | 0.3918 | 0.4983   | 0.4248    |
+| XGBoost             | 0.8277   | 0.7990    | 0.7041    | 0.3816 | 0.4949   | 0.4294    |
 
 ---
 
-## f. GitHub Repository Structure
+## 🔹 Observations on Model Performance
 
-```
-project-folder/
-│-- app.py
-│-- requirements.txt
-│-- README.md
-│-- model/
-│   │-- logistic_regression.py
-│   │-- decision_tree.py
-│   │-- knn.py
-│   │-- naive_bayes.py
-│   │-- random_forest.py
-│   │-- xgboost.py
+| ML Model            | Observation                                                                                                          |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Logistic Regression | Provides a strong baseline with good accuracy but lower recall, indicating difficulty in identifying all defaulters. |
+| Decision Tree       | Captures nonlinear patterns but shows lower overall performance and MCC due to overfitting.                          |
+| KNN                 | Performs moderately well but sensitive to feature scaling and hyperparameters.                                       |
+| Naive Bayes         | High recall but low accuracy due to independence assumptions among features.                                         |
+| Random Forest       | Strong ensemble performance with improved MCC and better stability.                                                  |
+| XGBoost             | Best performing model overall with highest AUC and MCC, capturing complex patterns effectively.                      |
+
+---
+
+## 🔹 Streamlit App Features
+
+The deployed Streamlit application provides:
+
+* CSV dataset upload option
+* Model selection dropdown
+* Display of evaluation metrics
+* Confusion matrix
+* Classification report
+
+---
+
+## 🔹 How to Run Locally
+
+```bash
+pip install -r requirements.txt
+python -m model.train_and_save
+streamlit run app.py
 ```
 
 ---
 
-## g. Deployment Details
+## 🔹 Live Streamlit App
 
-The application was deployed using Streamlit Community Cloud by connecting the GitHub repository and selecting app.py as the main application file. All required dependencies for the project are listed in the requirements.txt file to ensure successful deployment.
+```
 
----
-
-## h. BITS Virtual Lab Execution Proof
-
-The complete implementation and execution of this assignment were performed on the BITS Virtual Lab environment. A screenshot showing successful execution has been included in the final PDF submission as proof of compliance.
+```
 
 ---
 
-### End of README
+## 🔹 GitHub Repository
+
+```
+
+```
