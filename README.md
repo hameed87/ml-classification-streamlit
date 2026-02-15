@@ -96,7 +96,7 @@ streamlit run app.py
 ## 🔹 Live Streamlit App
 
 ```
-
+https://ml-classification-app-evmxsquvho6krhudxv2d4k.streamlit.app/
 ```
 
 ---
@@ -104,5 +104,5 @@ streamlit run app.py
 ## 🔹 GitHub Repository
 
 ```
-
+https://github.com/hameed87/ml-classification-streamlit
 ```
